@@ -1,0 +1,375 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chouchou Gourmet | Café, anime e mangá</title>
+    <meta name="description" content="Uma cafeteria para quem ama café, anime e mangá.">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="topbar">
+    <a class="brand" href="#inicio">
+        <span class="brand-symbol">喫</span>
+        <span>
+            <strong>CHOUCHOU</strong>
+            <small>GOURMET CAFÉ</small>
+        </span>
+    </a>
+
+    <nav class="navigation">
+        <a href="#inicio">Início</a>
+        <a href="#universos">Universos</a>
+        <a href="#cardapio">Cardápio</a>
+        <a href="#sobre">Sobre nós</a>
+    </nav>
+
+    <div class="header-actions">
+        <button class="icon-button" id="favoritesButton" title="Meus favoritos">♡</button>
+        <button class="icon-button cart-button" id="cartButton" title="Meu carrinho">
+            🛍 <span id="cartCount">0</span>
+        </button>
+        <button class="login-button" id="loginButton">Entrar</button>
+    </div>
+</header>
+
+<main>
+    <section class="hero" id="inicio">
+        <div class="hero-text">
+            <span class="eyebrow">CAFÉ • ANIME • MANGÁ</span>
+            <h1>Seu próximo capítulo começa com um café.</h1>
+            <p>
+                Um cantinho especial onde o aroma do café encontra
+                os universos que fazem parte das nossas histórias.
+            </p>
+            <a class="primary-button" href="#cardapio">Explorar cardápio</a>
+            <span class="hero-note">☕ Feito com carinho, servido com imaginação.</span>
+        </div>
+
+        <div class="hero-art">
+            <div class="manga-frame frame-one">
+                <span class="frame-label">COFFEE TIME!</span>
+                <div class="coffee-cup">☕</div>
+                <span class="steam">～ ～ ～</span>
+            </div>
+            <div class="speech-bubble">Uma pausa<br>na sua história!</div>
+            <span class="sparkle sparkle-one">✦</span>
+            <span class="sparkle sparkle-two">✧</span>
+            <span class="hero-stamp">VOL. 01</span>
+        </div>
+    </section>
+
+    <section class="intro-strip">
+        <span>✦ UM CAFÉ PARA CADA UNIVERSO</span>
+        <span>✦ ESCOLHA SUA PRÓXIMA AVENTURA</span>
+        <span>✦ FEITO PARA FÃS</span>
+    </section>
+
+    <section class="section universes-section" id="universos">
+        <div class="section-heading">
+            <div>
+                <span class="eyebrow">EXPLORE NOSSOS UNIVERSOS</span>
+                <h2>Qual será o seu próximo capítulo?</h2>
+            </div>
+            <p>Sabores e combinações inspirados em histórias inesquecíveis.</p>
+        </div>
+
+        <div class="universe-grid">
+            <button class="universe-card universe-romance" data-filter="Romance">
+                <span class="universe-symbol">♡</span>
+                <strong>Romance & Doçura</strong>
+                <small>Uma história delicada</small>
+            </button>
+
+            <button class="universe-card universe-adventure" data-filter="Aventura">
+                <span class="universe-symbol">⚓</span>
+                <strong>Aventura</strong>
+                <small>Sabores para explorar</small>
+            </button>
+
+            <button class="universe-card universe-dark" data-filter="Dark">
+                <span class="universe-symbol">☾</span>
+                <strong>Dark Fantasy</strong>
+                <small>Um lado mais intenso</small>
+            </button>
+
+            <button class="universe-card universe-mystery" data-filter="Mistério">
+                <span class="universe-symbol">✿</span>
+                <strong>Mistério & Tradição</strong>
+                <small>Descubra novos sabores</small>
+            </button>
+        </div>
+    </section>
+
+    <section class="section menu-section" id="cardapio">
+        <div class="section-heading menu-heading">
+            <div>
+                <span class="eyebrow">NOSSO CARDÁPIO</span>
+                <h2>Escolha algo especial.</h2>
+                <p class="section-description">
+                    Seu pedido favorito está a um clique de distância.
+                </p>
+            </div>
+
+            <div class="search-box">
+                <span>⌕</span>
+                <input type="search" id="searchInput" placeholder="Buscar produto...">
+            </div>
+        </div>
+
+        <div class="filter-list" id="categoryFilters">
+            <button class="filter-button active" data-filter="Todos">Todos</button>
+            <button class="filter-button" data-filter="Cafés">Cafés</button>
+            <button class="filter-button" data-filter="Doces">Doces</button>
+            <button class="filter-button" data-filter="Salgados">Salgados</button>
+            <button class="filter-button" data-filter="Kits">Kits</button>
+        </div>
+
+        <div class="product-grid" id="productGrid"></div>
+        <p class="empty-message hidden" id="emptyMessage">
+            Nenhum produto encontrado.
+        </p>
+    </section>
+
+    <section class="quote-section" id="sobre">
+        <span class="quote-mark">“</span>
+        <p>Algumas histórias merecem ser acompanhadas de um bom café.</p>
+        <span class="quote-caption">
+            CHOUCHOU GOURMET — UM UNIVERSO DE SABORES
+        </span>
+    </section>
+</main>
+
+<footer class="footer">
+    <div class="footer-brand">
+        <strong>CHOUCHOU GOURMET</strong>
+        <span>Café, anime e mangá em um só lugar.</span>
+    </div>
+    <p>© 2026 Chouchou Gourmet. Projeto acadêmico.</p>
+</footer>
+
+<!-- Painel do carrinho -->
+<div class="overlay hidden" id="cartOverlay">
+    <aside class="side-panel">
+        <div class="panel-header">
+            <div>
+                <span class="eyebrow">SEU PEDIDO</span>
+                <h2>Meu carrinho</h2>
+            </div>
+            <button class="close-button" data-close="cartOverlay">×</button>
+        </div>
+
+        <div id="cartItems" class="cart-items"></div>
+
+        <div class="cart-summary">
+            <label for="couponInput">Cupom de desconto</label>
+
+            <div class="coupon-row">
+                <input id="couponInput" type="text" placeholder="Digite seu cupom">
+                <button id="applyCouponButton">Aplicar</button>
+            </div>
+
+            <p id="couponMessage" class="coupon-message"></p>
+
+            <div class="summary-line">
+                <span>Subtotal</span>
+                <strong id="cartSubtotal">R$ 0,00</strong>
+            </div>
+
+            <div class="summary-line">
+                <span>Entrega (estimativa)</span>
+                <strong id="deliveryFee">R$ 5,00</strong>
+            </div>
+
+            <div class="summary-line discount-line">
+                <span>Desconto</span>
+                <strong id="cartDiscount">R$ 0,00</strong>
+            </div>
+
+            <div class="summary-total">
+                <span>Total</span>
+                <strong id="cartTotal">R$ 5,00</strong>
+            </div>
+
+            <button class="primary-button full-button" id="checkoutButton">
+                Continuar pedido
+            </button>
+
+            <small class="demo-note">
+                Valores e entrega são demonstrativos nesta versão.
+            </small>
+        </div>
+    </aside>
+</div>
+
+<!-- Login e cadastro demonstrativos -->
+<div class="overlay hidden" id="accountOverlay">
+    <section class="modal">
+        <button class="close-button modal-close" data-close="accountOverlay">×</button>
+
+        <span class="eyebrow">BEM-VINDO AO CHOUCHOU</span>
+        <h2 id="accountTitle">Entre na sua conta</h2>
+        <p class="modal-description">Acesse sua área de cliente.</p>
+
+        <form id="accountForm">
+            <div id="nameField" class="hidden">
+                <label for="accountName">Nome</label>
+                <input id="accountName" type="text" placeholder="Seu nome">
+            </div>
+
+            <label for="accountEmail">E-mail</label>
+            <input
+                    id="accountEmail"
+                    type="email"
+                    placeholder="seuemail@email.com"
+                    required
+            >
+
+            <label for="accountPassword">Senha</label>
+            <input
+                    id="accountPassword"
+                    type="password"
+                    placeholder="Sua senha"
+                    required
+                    minlength="4"
+            >
+
+            <button class="primary-button full-button" type="submit" id="accountSubmit">
+                Entrar
+            </button>
+        </form>
+
+        <p class="switch-account">
+            <span id="switchText">Ainda não tem conta?</span>
+            <button id="switchAccountButton" type="button">Cadastre-se</button>
+        </p>
+
+        <p class="demo-note">Conta demonstrativa: não utilize senhas reais.</p>
+        <p id="accountMessage" class="form-message"></p>
+    </section>
+</div>
+
+<!-- Resumo do pedido -->
+<div class="overlay hidden" id="checkoutOverlay">
+    <section class="modal checkout-modal">
+        <button class="close-button modal-close" data-close="checkoutOverlay">×</button>
+
+        <span class="eyebrow">QUASE LÁ!</span>
+        <h2>Resumo do pedido</h2>
+
+        <div id="checkoutDetails"></div>
+
+        <!-- Endereço de entrega -->
+        <div class="address-form">
+
+            <div class="form-group">
+                <label for="customerStreet">Rua</label>
+                <input
+                        type="text"
+                        id="customerStreet"
+                        placeholder="Rua"
+                        required
+                >
+            </div>
+
+            <div class="form-group">
+                <label for="customerNumber">Número</label>
+                <input
+                        type="text"
+                        id="customerNumber"
+                        placeholder="Número"
+                        required
+                >
+            </div>
+
+            <div class="form-group">
+                <label for="customerComplement">Complemento</label>
+                <input
+                        type="text"
+                        id="customerComplement"
+                        placeholder="Complemento (opcional)"
+                >
+            </div>
+
+            <div class="form-group">
+                <label for="customerNeighborhood">Bairro</label>
+                <input
+                        type="text"
+                        id="customerNeighborhood"
+                        placeholder="Bairro"
+                        required
+                >
+            </div>
+
+            <div class="form-group">
+                <label for="customerCity">Cidade</label>
+                <input
+                        type="text"
+                        id="customerCity"
+                        placeholder="Cidade"
+                        required
+                >
+            </div>
+
+            <div class="form-group">
+                <label for="customerZipCode">CEP</label>
+                <input
+                        type="text"
+                        id="customerZipCode"
+                        placeholder="00000-000"
+                        maxlength="9"
+                        required
+                >
+            </div>
+
+        </div>
+
+        <label for="paymentMethod">Forma de pagamento</label>
+        <select id="paymentMethod">
+            <option value="Pix">Pix</option>
+            <option value="Cartão">Cartão</option>
+        </select>
+
+        <button class="primary-button full-button" id="confirmOrderButton">
+            Confirmar pedido demonstrativo
+        </button>
+
+        <p class="demo-note">
+            Não haverá cobrança real. Esta etapa é apenas uma simulação.
+        </p>
+
+        <p id="checkoutMessage" class="form-message"></p>
+    </section>
+</div>
+
+<!-- Área do cliente -->
+<div class="overlay hidden" id="customerOverlay">
+    <section class="modal">
+        <button class="close-button modal-close" data-close="customerOverlay">×</button>
+
+        <span class="eyebrow">MINHA CONTA</span>
+        <h2 id="customerWelcome">Olá!</h2>
+
+        <div class="account-tabs">
+            <button class="filter-button active" data-account-tab="orders">
+                Meus pedidos
+            </button>
+
+            <button class="filter-button" data-account-tab="favorites">
+                Favoritos
+            </button>
+        </div>
+
+        <div id="customerContent"></div>
+
+        <button class="secondary-button full-button" id="logoutButton">
+            Sair da conta
+        </button>
+    </section>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
