@@ -1,4 +1,4 @@
- Chouchou Gourmet
+# Chouchou Gourmet
 
 Projeto acadêmico de uma cafeteria temática inspirada em café, anime e mangá. O sistema reúne uma vitrine de produtos e uma API para operações de clientes, catálogo e pedidos. A finalização da compra é demonstrativa: não há cobrança real.
 
