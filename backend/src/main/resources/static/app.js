@@ -14,6 +14,9 @@ let accountTab = "orders";
 
 const $ = (id) => document.getElementById(id);
 
+const API_BASE_URL =
+    "https://projetoacademico-cafeteriagourmet-aplicacao-production.up.railway.app";
+
 function money(value) {
     return value.toLocaleString("pt-BR", {
         style: "currency",
@@ -25,7 +28,7 @@ async function carregarProdutos() {
 
     try {
 
-        const response = await fetch("/api/produtos");
+        const response = await fetch(`${API_BASE_URL}/api/produtos`);
 
         if (!response.ok) {
             throw new Error("Erro ao buscar produtos.");
@@ -446,26 +449,22 @@ async function confirmOrder() {
     }
 
     try {
-
-        const response = await fetch(
-            "/api/enderecos",
-            {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({
-                    clienteId: currentUser.id,
-                    rua,
-                    numero,
-                    complemento,
-                    bairro,
-                    cidade,
-                    cep,
-                    definirComoPadrao: true
-                })
-            }
-        );
+        const response = await fetch(`${API_BASE_URL}/api/enderecos`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                clienteId: currentUser.id,
+                rua,
+                numero,
+                complemento,
+                bairro,
+                cidade,
+                cep,
+                definirComoPadrao: true
+            })
+        });
 
         if (!response.ok) {
 
@@ -662,22 +661,18 @@ $("accountForm").addEventListener("submit", async event => {
     if (accountMode === "register") {
 
         try {
-
-            const response = await fetch(
-                "/api/clientes",
-                {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
-                    body: JSON.stringify({
-                        nome: name,
-                        email: email,
-                        senha: password,
-                        celular: ""
-                    })
-                }
-            );
+            const response = await fetch(`${API_BASE_URL}/api/clientes`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    nome: name,
+                    email: email,
+                    senha: password,
+                    celular: ""
+                })
+            });
 
             if (!response.ok) {
 
@@ -723,20 +718,16 @@ $("accountForm").addEventListener("submit", async event => {
     // =====================================
 
     try {
-
-        const response = await fetch(
-            "/api/clientes/login",
-            {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({
-                    email,
-                    senha: password
-                })
-            }
-        );
+        const response = await fetch(`${API_BASE_URL}/api/clientes/login`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                email,
+                senha: password
+            })
+        });
 
         if (!response.ok) {
 
